@@ -3,7 +3,7 @@ entries:
   arm-exporter:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-04-02T17:03:37.356424695Z"
+    created: "2020-04-02T17:18:15.717303102Z"
     description: A Helm chart for Kubernetes
     digest: 3b129f0a6fca27e5ce683881567dfa466e057d15b6b6bfbcf12b8fadc7b6ef2b
     name: arm-exporter
@@ -12,17 +12,27 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-04-02T17:03:38.069113618Z"
+    created: "2020-04-02T17:18:16.57091654Z"
     description: A Helm chart for Kubernetes
     digest: 0b1b54ee2006a2f5342cbe12a1fea22800d680b69d86d8038972df5ee73d1c4b
     name: arm-exporter
     urls:
     - https://github.com/sjhangiani/helm-charts/releases/download/arm-exporter-0.1.0/arm-exporter-0.1.0.tgz
     version: 0.1.0
+  grafana:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-02T17:18:15.280686014Z"
+    description: A Helm chart for Kubernetes
+    digest: cd75bab432c616a0e6a48c2f1d9eae2908669e65dec2bed78b8488391a54f23c
+    name: grafana
+    urls:
+    - https://github.com/sjhangiani/helm-charts/releases/download/grafana-0.1.0/grafana-0.1.0.tgz
+    version: 0.1.0
   node-exporter:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-04-02T17:03:37.874177212Z"
+    created: "2020-04-02T17:18:16.350430425Z"
     description: A Helm chart for Kubernetes
     digest: 4557cb8f65195c98c54d87f19e7ce41a908ca90f3435f3f53e2604d0a24d2409
     name: node-exporter
@@ -32,7 +42,7 @@ entries:
   pihole:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-04-02T17:03:37.695576105Z"
+    created: "2020-04-02T17:18:16.128237078Z"
     description: A Helm chart for Kubernetes
     digest: cbdb4a332f77bc8e1679034d5ec61452bb3606238a7a5cee126abda1eee6779c
     name: pihole
@@ -42,11 +52,11 @@ entries:
   prometheus:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-04-02T17:03:37.536618228Z"
+    created: "2020-04-02T17:18:15.914760616Z"
     description: A Helm chart for Kubernetes
     digest: a42c720cd68320e4146dfa0cd76619a00abd862736c0c5e8d6b0536929127653
     name: prometheus
     urls:
     - https://github.com/sjhangiani/helm-charts/releases/download/prometheus-0.1.0/prometheus-0.1.0.tgz
     version: 0.1.0
-generated: "2020-04-02T17:03:36.909186272Z"
+generated: "2020-04-02T17:18:14.42862716Z"
