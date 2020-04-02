@@ -1,0 +1,43 @@
+apiVersion: v1
+entries:
+  arm-exporter:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-02T15:48:31.062769+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 0b1b54ee2006a2f5342cbe12a1fea22800d680b69d86d8038972df5ee73d1c4b
+    name: arm-exporter
+    urls:
+    - https://github.com/sjhangiani/helm-charts/releases/download/arm-exporter-0.1.0/arm-exporter-0.1.0.tgz
+    version: 0.1.0
+  node-exporter:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-02T15:48:31.242075+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 4557cb8f65195c98c54d87f19e7ce41a908ca90f3435f3f53e2604d0a24d2409
+    name: node-exporter
+    urls:
+    - https://github.com/sjhangiani/helm-charts/releases/download/node-exporter-0.1.0/node-exporter-0.1.0.tgz
+    version: 0.1.0
+  pihole:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-02T15:48:31.6798348+01:00"
+    description: A Helm chart for Kubernetes
+    digest: cbdb4a332f77bc8e1679034d5ec61452bb3606238a7a5cee126abda1eee6779c
+    name: pihole
+    urls:
+    - https://github.com/sjhangiani/helm-charts/releases/download/pihole-0.1.0/pihole-0.1.0.tgz
+    version: 0.1.0
+  prometheus:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-02T15:48:31.8823163+01:00"
+    description: A Helm chart for Kubernetes
+    digest: a42c720cd68320e4146dfa0cd76619a00abd862736c0c5e8d6b0536929127653
+    name: prometheus
+    urls:
+    - https://github.com/sjhangiani/helm-charts/releases/download/prometheus-0.1.0/prometheus-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-04-02T15:48:30.6026786+01:00"
