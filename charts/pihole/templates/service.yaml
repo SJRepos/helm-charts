@@ -1,15 +1,63 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "pihole.fullname" . }}
+  name: {{ include "pihole.fullname" . }}-web
   labels:
     {{- include "pihole.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  #type: {{ .Values.service.type }}
+  {{- if .Values.serviceTCP.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.serviceTCP.loadBalancerIP }}
+  {{- end }}
+  externalTrafficPolicy: {{ .Values.serviceTCP.externalTrafficPolicy }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+  - name : web
+    port: 80
+    targetPort: 80
+    protocol: TCP
   selector:
     {{- include "pihole.selectorLabels" . | nindent 4 }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "pihole.fullname" . }}-dns-tcp
+{{- if .Values.serviceTCPDNS.annotations }}
+  annotations:
+{{ toYaml .Values.serviceTCPDNS.annotations | indent 4 }}
+{{- end }}
+spec:
+  externalTrafficPolicy: {{ .Values.serviceTCPDNS.externalTrafficPolicy }}
+  ports:
+  - name : dns
+    protocol: TCP
+    port: 53
+    targetPort: 53
+  type: {{ .Values.serviceTCPDNS.type }}
+  {{- if .Values.serviceTCPDNS.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.serviceTCPDNS.loadBalancerIP }}
+  {{- end }}
+  selector:
+    {{- include "pihole.selectorLabels" . | nindent 4 }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "pihole.fullname" . }}-dns-udp
+{{- if .Values.serviceUDPDNS.annotations }}
+  annotations:
+{{ toYaml .Values.serviceUDPDNS.annotations | indent 4 }}
+{{- end }}
+spec:
+  externalTrafficPolicy: {{ .Values.serviceUDPDNS.externalTrafficPolicy }}
+  ports:
+  - name : dns
+    protocol: UDP
+    port: 53
+    targetPort: 53
+  type: {{ .Values.serviceUDPDNS.type }}
+  {{- if .Values.serviceTCPDNS.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.serviceTCPDNS.loadBalancerIP }}
+  {{- end }}  
+  selector:
+  {{- include "pihole.selectorLabels" . | nindent 4 }}
