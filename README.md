@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/sjhangiani/helm-charts.svg?style=svg)](https://circleci.com/gh/sjhangiani/helm-charts)
+
 # My [Helm](https://helm.sh) Charts
 
 * [Arm-Exporter](charts/arm-exporter/)
@@ -9,10 +11,3 @@ Add the Repository to Helm:
 
     helm repo add charts https://sjhangiani.github.io/helm-charts/
 
-Install Application 1:
-
-    helm install charts/app1
-
-Install Application 2:
-
-    helm install charts/app2
