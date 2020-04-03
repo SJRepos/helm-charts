@@ -14,19 +14,28 @@ spec:
       labels:
         {{- include "pihole.selectorLabels" . | nindent 8 }}
     spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-      serviceAccountName: {{ include "pihole.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: 'ServerIP'
+            value: {{ .Values.pihole.server | quote }}
+          - name: 'DNS1'
+            value: {{ .Values.pihole.dns1 | quote }}
+          - name: 'DNS2'
+            value: {{ .Values.pihole.dns2 | quote }}
+          - name: TZ
+            value: {{ .Values.pihole.timezone | quote }}
+          {{- if .Values.pihole.password }}
+          - name: WEBPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "pi-hole.fullname" . }}
+                key: password
+          {{- end }}
+          - name: DNSMASQ_LISTENING
+            value: {{ .Values.pihole.listening | quote }}
           ports:
             - name: http
               containerPort: 80
@@ -39,6 +48,15 @@ spec:
             httpGet:
               path: /
               port: http
+
+          volumeMounts:
+          - mountPath: "/etc/pihole"
+            name: pihole-storage
+            subPath: pihole/etc/pihole
+          - mountPath: "/etc/dnsmasq.d"
+            name: pihole-storage
+            subPath: pihole/etc/dnsmasq.q                
+              
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -53,3 +71,9 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+  
+      volumes:
+        - name: pihole-storage
+          nfs:
+            server: {{ .Values.nfs.server }} 
+            path: {{ .Values.nfs.path }} #       
